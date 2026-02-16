@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: hsl(245, 58%, 51%);
+  --color-primary-foreground: #fff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes readiness-fill {
+  from {
+    stroke-dashoffset: 282.74;
+  }
+  to {
+    stroke-dashoffset: 79.17;
+  }
+}

@@ -1,0 +1,468 @@
+/**
+ * KodNest Premium Build System
+ * Design system tokens and base styles.
+ *
+ * Philosophy: Calm, Intentional, Coherent, Confident.
+ * No gradients, glassmorphism, neon, or animation noise.
+ * Spacing: 8, 16, 24, 40, 64 only. Transitions: 150–200ms ease-in-out.
+ */
+
+/* ---------------------------------------------------------------------------
+   DESIGN TOKENS
+   --------------------------------------------------------------------------- */
+:root {
+  /* Colors — maximum 4 in use */
+  --kn-color-bg: #F7F6F3;
+  --kn-color-text: #111111;
+  --kn-color-accent: #8B0000;
+  --kn-color-success: #5c6b5c;
+  --kn-color-warning: #7a6b4a;
+
+  /* Typography — headings: serif, large, confident; body: sans, 16–18px, line-height 1.6–1.8 */
+  --kn-font-serif: "Lora", "Georgia", serif;
+  --kn-font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --kn-text-size-body: 17px;
+  --kn-text-size-body-sm: 16px;
+  --kn-text-size-caption: 14px;
+  --kn-text-size-h1: 2.25rem;
+  --kn-text-size-h2: 1.75rem;
+  --kn-text-size-h3: 1.25rem;
+  --kn-line-height-body: 1.7;
+  --kn-line-height-tight: 1.35;
+  --kn-text-max-width: 720px;
+
+  /* Spacing scale: 8, 16, 24, 40, 64 — never random values */
+  --kn-space-1: 8px;
+  --kn-space-2: 16px;
+  --kn-space-3: 24px;
+  --kn-space-4: 40px;
+  --kn-space-5: 64px;
+
+  /* Layout */
+  --kn-workspace-ratio: 70%;
+  --kn-panel-ratio: 30%;
+  --kn-radius: 6px;
+  --kn-transition: 175ms ease-in-out;
+}
+
+/* ---------------------------------------------------------------------------
+   GLOBAL BASE
+   --------------------------------------------------------------------------- */
+.kn-root {
+  background-color: var(--kn-color-bg);
+  color: var(--kn-color-text);
+  font-family: var(--kn-font-sans);
+  font-size: var(--kn-text-size-body);
+  line-height: var(--kn-line-height-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.kn-root *,
+.kn-root *::before,
+.kn-root *::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------------
+   TYPOGRAPHY
+   --------------------------------------------------------------------------- */
+.kn-heading {
+  font-family: var(--kn-font-serif);
+  font-weight: 600;
+  line-height: var(--kn-line-height-tight);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.kn-heading--h1 {
+  font-size: var(--kn-text-size-h1);
+  margin-bottom: var(--kn-space-2);
+}
+
+.kn-heading--h2 {
+  font-size: var(--kn-text-size-h2);
+  margin-bottom: var(--kn-space-2);
+}
+
+.kn-heading--h3 {
+  font-size: var(--kn-text-size-h3);
+  margin-bottom: var(--kn-space-1);
+}
+
+.kn-body {
+  font-size: var(--kn-text-size-body);
+  line-height: var(--kn-line-height-body);
+  max-width: var(--kn-text-max-width);
+  margin: 0 0 var(--kn-space-2);
+}
+
+.kn-caption {
+  font-size: var(--kn-text-size-caption);
+  color: var(--kn-color-text);
+  opacity: 0.85;
+}
+
+/* ---------------------------------------------------------------------------
+   LAYOUT: TOP BAR
+   --------------------------------------------------------------------------- */
+.kn-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--kn-space-2) var(--kn-space-4);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  background-color: var(--kn-color-bg);
+  flex-shrink: 0;
+}
+
+.kn-topbar__project {
+  font-family: var(--kn-font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--kn-color-text);
+}
+
+.kn-topbar__progress {
+  font-size: var(--kn-text-size-caption);
+  color: var(--kn-color-text);
+  opacity: 0.8;
+}
+
+.kn-topbar__status {
+  /* Badge lives here */
+}
+
+/* ---------------------------------------------------------------------------
+   LAYOUT: CONTEXT HEADER
+   --------------------------------------------------------------------------- */
+.kn-context-header {
+  padding: var(--kn-space-4) var(--kn-space-4) var(--kn-space-3);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.kn-context-header__headline {
+  font-family: var(--kn-font-serif);
+  font-size: var(--kn-text-size-h1);
+  font-weight: 600;
+  line-height: var(--kn-line-height-tight);
+  margin: 0 0 var(--kn-space-1);
+}
+
+.kn-context-header__subtext {
+  font-size: var(--kn-text-size-body-sm);
+  line-height: var(--kn-line-height-body);
+  color: var(--kn-color-text);
+  opacity: 0.85;
+  margin: 0;
+  max-width: var(--kn-text-max-width);
+}
+
+/* ---------------------------------------------------------------------------
+   LAYOUT: MAIN CONTENT (Workspace + Panel)
+   --------------------------------------------------------------------------- */
+.kn-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.kn-workspace {
+  width: var(--kn-workspace-ratio);
+  padding: var(--kn-space-4);
+  overflow: auto;
+}
+
+.kn-panel {
+  width: var(--kn-panel-ratio);
+  padding: var(--kn-space-3) var(--kn-space-4);
+  border-left: 1px solid rgba(17, 17, 17, 0.08);
+  background-color: rgba(17, 17, 17, 0.02);
+  overflow: auto;
+}
+
+.kn-panel__title {
+  font-size: var(--kn-text-size-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 var(--kn-space-2);
+  color: var(--kn-color-text);
+  opacity: 0.8;
+}
+
+.kn-panel__step-desc {
+  font-size: var(--kn-text-size-body-sm);
+  line-height: var(--kn-line-height-body);
+  margin: 0 0 var(--kn-space-3);
+  max-width: var(--kn-text-max-width);
+}
+
+.kn-panel__prompt-box {
+  font-family: ui-monospace, monospace;
+  font-size: var(--kn-text-size-caption);
+  line-height: 1.6;
+  padding: var(--kn-space-2);
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: var(--kn-radius);
+  background-color: #fff;
+  color: var(--kn-color-text);
+  margin-bottom: var(--kn-space-2);
+  resize: vertical;
+  min-height: 80px;
+  width: 100%;
+  transition: border-color var(--kn-transition), box-shadow var(--kn-transition);
+}
+
+.kn-panel__prompt-box:focus {
+  outline: none;
+  border-color: var(--kn-color-accent);
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.12);
+}
+
+.kn-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kn-space-1);
+  margin-top: var(--kn-space-2);
+}
+
+/* ---------------------------------------------------------------------------
+   LAYOUT: PROOF FOOTER
+   --------------------------------------------------------------------------- */
+.kn-proof-footer {
+  padding: var(--kn-space-2) var(--kn-space-4);
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  background-color: var(--kn-color-bg);
+  flex-shrink: 0;
+}
+
+.kn-proof-footer__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kn-space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--kn-text-size-caption);
+  color: var(--kn-color-text);
+  opacity: 0.9;
+}
+
+.kn-proof-footer__item {
+  display: flex;
+  align-items: center;
+  gap: var(--kn-space-1);
+}
+
+.kn-proof-footer__checkbox {
+  width: var(--kn-space-2);
+  height: var(--kn-space-2);
+  flex-shrink: 0;
+  border: 1px solid rgba(17, 17, 17, 0.25);
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color var(--kn-transition), background-color var(--kn-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kn-proof-footer__checkbox:focus {
+  outline: none;
+  border-color: var(--kn-color-accent);
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.12);
+}
+
+.kn-proof-footer__checkbox[aria-checked="true"] {
+  background-color: var(--kn-color-accent);
+  border-color: var(--kn-color-accent);
+}
+
+.kn-proof-footer__checkbox[aria-checked="true"]::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+  margin-left: 1px;
+}
+
+/* ---------------------------------------------------------------------------
+   COMPONENTS: BUTTONS
+   --------------------------------------------------------------------------- */
+.kn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kn-space-1);
+  padding: var(--kn-space-1) var(--kn-space-2);
+  font-family: var(--kn-font-sans);
+  font-size: var(--kn-text-size-body-sm);
+  font-weight: 500;
+  border-radius: var(--kn-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--kn-transition), border-color var(--kn-transition), color var(--kn-transition);
+}
+
+.kn-btn--primary {
+  background-color: var(--kn-color-accent);
+  color: #fff;
+  border-color: var(--kn-color-accent);
+}
+
+.kn-btn--primary:hover {
+  background-color: #6e0000;
+  border-color: #6e0000;
+}
+
+.kn-btn--secondary {
+  background-color: transparent;
+  color: var(--kn-color-text);
+  border-color: rgba(17, 17, 17, 0.25);
+}
+
+.kn-btn--secondary:hover {
+  border-color: var(--kn-color-accent);
+  color: var(--kn-color-accent);
+}
+
+.kn-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--kn-color-bg), 0 0 0 4px var(--kn-color-accent);
+}
+
+/* ---------------------------------------------------------------------------
+   COMPONENTS: INPUTS
+   --------------------------------------------------------------------------- */
+.kn-input {
+  width: 100%;
+  padding: var(--kn-space-1) var(--kn-space-2);
+  font-family: var(--kn-font-sans);
+  font-size: var(--kn-text-size-body-sm);
+  line-height: 1.5;
+  color: var(--kn-color-text);
+  background-color: #fff;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: var(--kn-radius);
+  transition: border-color var(--kn-transition), box-shadow var(--kn-transition);
+}
+
+.kn-input::placeholder {
+  color: var(--kn-color-text);
+  opacity: 0.5;
+}
+
+.kn-input:hover {
+  border-color: rgba(17, 17, 17, 0.25);
+}
+
+.kn-input:focus {
+  outline: none;
+  border-color: var(--kn-color-accent);
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.12);
+}
+
+/* ---------------------------------------------------------------------------
+   COMPONENTS: CARDS
+   --------------------------------------------------------------------------- */
+.kn-card {
+  padding: var(--kn-space-3);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: var(--kn-radius);
+  background-color: #fff;
+  transition: border-color var(--kn-transition);
+}
+
+.kn-card:hover {
+  border-color: rgba(17, 17, 17, 0.12);
+}
+
+/* ---------------------------------------------------------------------------
+   COMPONENTS: BADGE (Status)
+   --------------------------------------------------------------------------- */
+.kn-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--kn-space-1) var(--kn-space-2);
+  font-family: var(--kn-font-sans);
+  font-size: var(--kn-text-size-caption);
+  font-weight: 500;
+  border-radius: var(--kn-radius);
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  background-color: #fff;
+  color: var(--kn-color-text);
+}
+
+.kn-badge--not-started {
+  opacity: 0.7;
+}
+
+.kn-badge--in-progress {
+  border-color: var(--kn-color-accent);
+  color: var(--kn-color-accent);
+}
+
+.kn-badge--shipped {
+  border-color: var(--kn-color-success);
+  color: var(--kn-color-success);
+}
+
+/* ---------------------------------------------------------------------------
+   ERROR & EMPTY STATES
+   Error: explain what went wrong + how to fix; never blame user.
+   Empty: provide next action; never feel dead.
+   --------------------------------------------------------------------------- */
+.kn-error-box {
+  padding: var(--kn-space-3);
+  border: 1px solid rgba(139, 0, 0, 0.2);
+  border-radius: var(--kn-radius);
+  background-color: rgba(139, 0, 0, 0.04);
+  color: var(--kn-color-text);
+}
+
+.kn-error-box__title {
+  font-weight: 600;
+  margin: 0 0 var(--kn-space-1);
+}
+
+.kn-error-box__message {
+  margin: 0 0 var(--kn-space-2);
+  font-size: var(--kn-text-size-body-sm);
+  line-height: var(--kn-line-height-body);
+}
+
+.kn-error-box__fix {
+  font-size: var(--kn-text-size-body-sm);
+  line-height: var(--kn-line-height-body);
+  margin: 0;
+}
+
+.kn-empty-state {
+  padding: var(--kn-space-4);
+  text-align: center;
+  color: var(--kn-color-text);
+  opacity: 0.85;
+}
+
+.kn-empty-state__title {
+  font-family: var(--kn-font-serif);
+  font-size: var(--kn-text-size-h3);
+  margin: 0 0 var(--kn-space-1);
+}
+
+.kn-empty-state__hint {
+  margin: 0;
+  font-size: var(--kn-text-size-body-sm);
+  line-height: var(--kn-line-height-body);
+}
+
+.kn-empty-state__action {
+  margin-top: var(--kn-space-3);
+}
