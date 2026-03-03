@@ -1,0 +1,77 @@
+/**
+ * KodNest Premium Build System — Global & Typography
+ * One mind. No decorative fonts. No random sizes.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: var(--kn-background);
+  color: var(--kn-text);
+  font-family: var(--kn-font-sans);
+  font-size: var(--kn-size-body);
+  line-height: var(--kn-line-height-body);
+  min-height: 100vh;
+}
+
+/* ——— Headings (serif, confident, generous spacing) ——— */
+h1, .kn-heading-1 {
+  font-family: var(--kn-font-serif);
+  font-size: var(--kn-size-h1);
+  font-weight: var(--kn-weight-normal);
+  line-height: var(--kn-line-height-tight);
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--kn-space-md);
+}
+
+h2, .kn-heading-2 {
+  font-family: var(--kn-font-serif);
+  font-size: var(--kn-size-h2);
+  font-weight: var(--kn-weight-normal);
+  line-height: var(--kn-line-height-tight);
+  margin: 0 0 var(--kn-space-sm);
+}
+
+h3, .kn-heading-3 {
+  font-family: var(--kn-font-serif);
+  font-size: var(--kn-size-h3);
+  font-weight: var(--kn-weight-medium);
+  line-height: var(--kn-line-height-tight);
+  margin: 0 0 var(--kn-space-xs);
+}
+
+/* ——— Body text (max 720px, 16–18px, 1.6–1.8) ——— */
+p, .kn-body {
+  max-width: var(--kn-measure);
+  font-size: var(--kn-size-body-lg);
+  line-height: var(--kn-line-height-loose);
+  margin: 0 0 var(--kn-space-sm);
+}
+
+.kn-body-sm {
+  font-size: var(--kn-size-body);
+  line-height: var(--kn-line-height-body);
+}
+
+.kn-text-muted {
+  color: var(--kn-text-muted);
+  font-size: var(--kn-size-small);
+}
+
+/* ——— Transitions (150–200ms, ease-in-out, no bounce) ——— */
+a, button, input, select, textarea {
+  transition: border-color var(--kn-transition),
+              background-color var(--kn-transition),
+              color var(--kn-transition),
+              opacity var(--kn-transition);
+}
